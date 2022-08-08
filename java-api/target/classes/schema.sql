@@ -1,4 +1,7 @@
 DROP TABLE IF EXISTS Users;
+DROP TABLE IF EXISTS Book;
+DROP TABLE IF EXISTS Book_User;
+
 --DROP TABLE IF EXISTS dogs;
 
 --
@@ -15,17 +18,18 @@ email VARCHAR(250),
 role VARCHAR(250)
 );
 
---CREATE TABLE Book_User (
---bookid INT , 
---userid INT,
---FOREIGN KEY (bookid) REFERENCES Book(bookid),
---FOREIGN KEY (userid) REFERENCES User(userid)
---);
---
---CREATE TABLE Book (
---bookid INT primary key, 
---book_name VARCHAR(250) NOT NULL
---);
+CREATE TABLE Book (
+bookid INT primary key, 
+book_name VARCHAR(250) NOT NULL
+);
+
+CREATE TABLE Book_User (
+id INT AUTO_INCREMENT primary key,
+bookid INT, 
+userid INT,
+FOREIGN KEY (bookid) REFERENCES Book(bookid),
+FOREIGN KEY (userid) REFERENCES Users(userid)
+);
 --
 --
 --CREATE TABLE Security (

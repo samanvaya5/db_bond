@@ -10,7 +10,7 @@ import java.sql.Date;
 @Table(name = "Trade")
 public class Trade implements Serializable{
 	@Id
-	private int tradeid;
+	private Long tradeid;
     private int bookid;
     private int counterpartyid;
     private int securityid;
@@ -24,7 +24,7 @@ public class Trade implements Serializable{
 
     }
 
-    public Trade(int tradeid, int bookid, int counterpartyid,int securityid,int quantity,String status,String buy_sell, float price, Date trade_date, Date settlement_date ) {
+    public Trade(Long tradeid, int bookid, int counterpartyid,int securityid,int quantity,String status,String buy_sell, float price, Date trade_date, Date settlement_date ) {
     	this.tradeid=tradeid;
         this.bookid = bookid;
         this.counterpartyid = counterpartyid;
@@ -39,11 +39,19 @@ public class Trade implements Serializable{
     }
 
     @Column(name = "tradeid", nullable = false)
-    public int getTradeid() {
+    public Long getTradeid() {
         return tradeid;
     }
-    public void setTradeid(int id) {
+    public void setTradeid(Long id) {
         this.tradeid = id;
+    }
+    
+    @Column(name = "securityid", nullable = false)
+    public int getSecurityid() {
+        return securityid;
+    }
+    public void setSecurityid(int id) {
+        this.securityid = id;
     }
     
     @Column(name = "quantity", nullable = false)

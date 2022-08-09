@@ -8,7 +8,7 @@ public class WelcomeController {
 
   @GetMapping("/")
   public String getWelcome() {
-    return "Users API is up and running!";
+    return "Bond App is up and running!";
   }
 
 }

@@ -72,7 +72,7 @@ public class TradeController {
 
     @PutMapping("/trade/{id}")
     public ResponseEntity < Trade > updateTrade(@PathVariable(value = "id") Long id,
-        @Valid @RequestBody Trade tradeDetails, @RequestBody Users user) throws ResourceNotFoundException {
+        @Valid @RequestBody Trade tradeDetails) throws ResourceNotFoundException {
     	
 //    	if(user.getRole() == "admin") {
     		Trade getTrade = TradeRepository.findById(id)

@@ -35,11 +35,6 @@ public class TradeController {
     private UsersRepository UsersRepository;
     private SecurityRepository SecurityRepository;
     
-    @GetMapping("/trade")
-    public List < Trade > getAllTrades() {
-        return TradeRepository.findAll();
-    }
-
     @GetMapping("/trade/{id}")
     public ResponseEntity < Trade > getTradeById(@PathVariable(value = "id") Long id)
     throws ResourceNotFoundException {
@@ -48,20 +43,25 @@ public class TradeController {
         return ResponseEntity.ok().body(trades);
     }
     
+    @GetMapping("/trade")
+    public List < Trade > getAllTrades() {
+        return TradeRepository.findAll();
+    }
+    
     @GetMapping("/SecurityFromtrade/{id}")
     public ResponseEntity < Security > getSecurityFromtrade(@PathVariable(value = "id") Long id)
     throws ResourceNotFoundException {
     	Trade trades = TradeRepository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException("Trade not found for this id :: " + id));
     	
-//    	int securityid = trades.getSecurityid();
-    	Security security = SecurityRepository.findById((long) trades.getSecurityid())
+    	int securityid = trades.getSecurityid();
+    	Security security = SecurityRepository.findById((long) securityid)
                 .orElseThrow(() -> new ResourceNotFoundException("Security not found for this id :: " + id));
         return ResponseEntity.ok().body(security);
     }
 
     @PostMapping("/trade")
-    public Trade createtrade(@Valid @RequestBody Trade trade, @RequestBody Users user) {
+    public Trade createtrade(@Valid @RequestBody Trade trade) {
 //    	if(user.getRole() == "admin") {
     		return TradeRepository.saveAndFlush(trade);
 //    		return "DONE!";
@@ -72,7 +72,7 @@ public class TradeController {
 
     @PutMapping("/trade/{id}")
     public ResponseEntity < Trade > updateTrade(@PathVariable(value = "id") Long id,
-        @Valid @RequestBody Trade tradeDetails, @RequestBody Users user) throws ResourceNotFoundException {
+        @Valid @RequestBody Trade tradeDetails) throws ResourceNotFoundException {
     	
 //    	if(user.getRole() == "admin") {
     		Trade getTrade = TradeRepository.findById(id)

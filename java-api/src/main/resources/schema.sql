@@ -1,8 +1,9 @@
+DROP ALL OBJECTS ;
 DROP TABLE IF EXISTS Users;
 DROP TABLE IF EXISTS Book;
 DROP TABLE IF EXISTS Book_User;
 DROP TABLE IF EXISTS Counter_Party;
-DROP TABLE IF EXISTS Security;
+DROP TABLE IF EXISTS Securities;
 DROP TABLE IF EXISTS Trade;
 
 CREATE TABLE Users (
@@ -25,7 +26,7 @@ FOREIGN KEY (bookid) REFERENCES Book(bookid),
 FOREIGN KEY (userid) REFERENCES Users(userid)
 );
 
-CREATE TABLE Security (
+CREATE TABLE Securities (
 securityid INT primary key, 
 isin VARCHAR(250), 
 cusip VARCHAR(250), 
@@ -46,7 +47,7 @@ CREATE TABLE Trade (
 tradeid INT primary key, 
 bookid INT,
 counterpartyid INT,
-securityid INT , 
+securityid  INT, 
 quantity INT,
 status VARCHAR(250),
 price FLOAT,
@@ -55,5 +56,5 @@ trade_date DATE,
 settlement_date DATE,
 FOREIGN KEY (bookid) REFERENCES Book(bookid),
 FOREIGN KEY (counterpartyid) REFERENCES Counter_Party(counterpartyid),
-FOREIGN KEY (securityid) REFERENCES Security(securityid)
+FOREIGN KEY (securityid) REFERENCES Securities(securityid)
 );

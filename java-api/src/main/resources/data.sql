@@ -8,8 +8,8 @@ INSERT INTO Book (bookid, book_name) VALUES (2, 'ImpressiveBook');
 INSERT INTO Book_User (id, bookid, userid) VALUES (1, 1, 2);
 INSERT INTO Book_User (id, bookid, userid) VALUES (2, 2, 3);
 
-INSERT INTO Security (securityid, isin, cusip, issuer, maturity_date, coupon, typeval, facevalue, status) VALUES (1, 'US0378331005', '02079K107', 'Google', '2020-10-09', 4.5, 'type1', 10, 'MATURED');
-INSERT INTO Security (securityid, isin, cusip, issuer, maturity_date, coupon, typeval, facevalue, status) VALUES (2, 'US0377331005', '13070P107', 'DB', '2023-10-09', 5.6, 'type2', 5, 'UNMATURED');
+INSERT INTO Securities (securityid, isin, cusip, issuer, maturity_date, coupon, typeval, facevalue, status) VALUES (1, 'US0378331005', '02079K107', 'Google', '2020-10-09', 4.5, 'type1', 10, 'MATURED');
+INSERT INTO Securities (securityid, isin, cusip, issuer, maturity_date, coupon, typeval, facevalue, status) VALUES (2, 'US0377331005', '13070P107', 'DB', '2023-10-09', 5.6, 'type2', 5, 'UNMATURED');
 
 INSERT INTO Counter_Party (counterpartyid, name) VALUES (1, 'BigCounterParty');
 INSERT INTO Counter_Party (counterpartyid, name) VALUES (2, 'LargeCounterParty');

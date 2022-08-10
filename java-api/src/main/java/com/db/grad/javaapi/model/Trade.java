@@ -46,6 +46,22 @@ public class Trade implements Serializable{
         this.tradeid = id;
     }
     
+    @Column(name = "bookid", nullable = false)
+    public int getBookid() {
+        return bookid;
+    }
+    public void setBookid(int id) {
+        this.bookid = id;
+    }
+    
+    @Column(name = "counterpartyid", nullable = false)
+    public int getCounterpartyid() {
+        return counterpartyid;
+    }
+    public void setCounterpartyid(int id) {
+        this.counterpartyid = id;
+    }
+    
     @Column(name = "securityid", nullable = false)
     public int getSecurityid() {
         return securityid;
